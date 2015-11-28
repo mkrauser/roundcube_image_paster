@@ -1,5 +1,6 @@
 {
-    "name": "mat_krauser/image_paster",
+    "name": "mak/image_paster",
+    "replace": {"mat_krauser/image_paster": "self.version"},
     "type": "roundcube-plugin",
     "description": "Paste Images from Clipboard directly into new eMails",
     "keywords": ["clipboard", "image", "mail"],

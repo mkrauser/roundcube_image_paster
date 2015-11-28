@@ -8,6 +8,9 @@ twitter: @mat_krauser
 
 ## Changelog
 
+### 1.0 (2015-11-28)
+* Upgrade to work with TinyMCE 4.x
+
 ### 0.1 (2013-12-26)
 * Initial Release
 
@@ -18,8 +21,8 @@ twitter: @mat_krauser
 
 ## Requirements
 
-* Roundcube 0.9 (used for development, but may work also in ealier versions)
-* Tested only in Chrome 31
+* Roundcube 1.1.3 (first version with TinyMCE 4.x)
+* Tested only in Chrome 31 and 46
 
 ## Documentation
 

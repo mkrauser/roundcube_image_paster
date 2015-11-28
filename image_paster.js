@@ -7,7 +7,6 @@
  * If you have any hints or suggestions, feel free to contact me.
  *
  * @author  Matthias Krauser <matthias@krauser.eu> @mat_krauser
- * @version 0.1a
  * @date    2013-12-10
  * @license GPL
  *
@@ -16,8 +15,9 @@
 $(document).ready(function() {
     if (window.rcmail) {
 
-        tinyMCE.onAddEditor.add(function(manager, editor) {
-            editor.onPaste.add(function(editor, event) {
+        tinymce.PluginManager.add('image_paster', function (editor, url) {
+
+            editor.on('paste', function(event) {
                 var items = (event.clipboardData || event.originalEvent.clipboardData).items;
                 if (items.length == 1 && items[0].type.indexOf('image') == 0) {
                     var f = items[0].getAsFile();
@@ -74,6 +74,8 @@ $(document).ready(function() {
                     // do it the easy way with FormData (FF 4+, Chrome 5+, Safari 5+)
                     f.filename = "pasted_image" + (new Date).getTime() + "." + f.type.substr(6);
                     formdata.append(fieldname, f, f.filename);
+
+                    event.preventDefault();
                     return submit_data();
                 };
             });

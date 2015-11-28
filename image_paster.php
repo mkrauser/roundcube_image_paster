@@ -9,7 +9,6 @@
  * If you have any hints or suggestions, feel free to contact me.
  *
  * @author  Matthias Krauser <matthias@krauser.eu> @mat_krauser
- * @version 0.1a
  * @date    2013-12-10
  * @license GPL
  *
@@ -21,8 +20,9 @@ class image_paster extends rcube_plugin
 
   function init()
   {
-    $this->add_hook('render_page', array($this, 'compose'));
-    $this->register_action('plugin.uploadClipboardImage', array($this, 'handleUpload'));
+    $this->add_hook('html_editor', [$this, 'html_editor']);
+    $this->add_hook('render_page', [$this, 'compose']);
+    $this->register_action('plugin.uploadClipboardImage', [$this, 'handleUpload']);
   }
 
   /**
@@ -30,11 +30,19 @@ class image_paster extends rcube_plugin
    */
   function compose($args)
   {
-    // find the compose template
-    if ($args['template'] == 'compose')
-    {
+    if ($args['template'] == 'compose') {
       $this->include_script('image_paster.js');
     }
+    return $args;
+  }
+
+  /**
+   * add a fileapi implementation to the compose template
+   */
+  function html_editor($args)
+  {
+    $args['extra_plugins'][] = 'image_paster';
+
     return $args;
   }
 }
