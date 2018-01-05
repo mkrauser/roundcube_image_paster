@@ -20,9 +20,9 @@ class image_paster extends rcube_plugin
 
   function init()
   {
-    $this->add_hook('html_editor', [$this, 'html_editor']);
-    $this->add_hook('render_page', [$this, 'compose']);
-    $this->register_action('plugin.uploadClipboardImage', [$this, 'handleUpload']);
+    $this->add_hook('html_editor', array($this, 'html_editor'));
+    $this->add_hook('render_page', array($this, 'compose'));
+    $this->register_action('plugin.uploadClipboardImage', array($this, 'handleUpload'));
   }
 
   /**
